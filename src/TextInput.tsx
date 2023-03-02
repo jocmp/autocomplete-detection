@@ -5,6 +5,7 @@ interface Props {
   label: string;
   value: string;
   required?: boolean;
+  autoComplete?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -13,6 +14,7 @@ export function TextInput({
   label,
   onChange,
   value,
+  autoComplete = undefined,
   required = false,
 }: Props) {
   return (
@@ -24,6 +26,7 @@ export function TextInput({
         type="text"
         required={required}
         onChange={onChange}
+        autoComplete={autoComplete}
         value={value}
       />
     </div>

@@ -49,6 +49,7 @@ export function AddressEditor(props: Props) {
         name="country-code"
         value={address.countryCode}
         required
+        autoComplete="country"
         onChange={updateCountryCode}
       >
         {map(countries, (name, key) => (
@@ -59,12 +60,14 @@ export function AddressEditor(props: Props) {
         id="contact-name"
         label="Name"
         onChange={updateField('contactName')}
+        autoComplete="name"
         value={address.contactName}
         required
       />
       <TextInput
         id="street-address"
         label="Street Address"
+        autoComplete="address-line1"
         onChange={updateField('streetAddress')}
         value={address.streetAddress}
         required
@@ -72,12 +75,14 @@ export function AddressEditor(props: Props) {
       <TextInput
         id="extended-address"
         label="Extended Address"
+        autoComplete="address-line2"
         onChange={updateField('extendedAddress')}
         value={address.extendedAddress}
       />
       <TextInput
         id="locality"
         label="City"
+        autoComplete="address-level2"
         onChange={updateField('locality')}
         value={address.locality}
         required
@@ -89,6 +94,7 @@ export function AddressEditor(props: Props) {
             className="selector"
             id="admin-area"
             name="admin-area"
+            autoComplete="address-level1"
             value={address.administrativeAreaCode}
             required
             onChange={updateField('administrativeAreaCode')}
@@ -104,15 +110,10 @@ export function AddressEditor(props: Props) {
         id="postal-code"
         label="Postal Code"
         onChange={updateField('postalCode')}
+        autoComplete="postal-code"
         value={address.postalCode}
         required
       />
     </form>
   );
-}
-
-function countryOrDefault(address: Address) {
-  return {
-    countryCode: address.countryCode || 'US'
-  };
 }
