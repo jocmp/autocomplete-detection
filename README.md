@@ -29,7 +29,7 @@ Or run it locally:
 
 ## Appendix
 
-`insertReplacementText` is [documented by the W3C](https://rawgit.com/w3c/input-events/v1/index.html#interface-InputEvent-Attributes) as a type that is mean to "replace existing text by means of a spell checker, auto-correct or similar."
+`insertReplacementText` is [documented by the W3C](https://rawgit.com/w3c/input-events/v1/index.html#interface-InputEvent-Attributes) as a type that is meant to "replace existing text by means of a spell checker, auto-correct or similar."
 
 While Webkit browsers support `InputEvent`, there's an outstanding bug that does not surface input type
 or data. The expected value would also be `insertReplacementText` which is how Firefox acts.
