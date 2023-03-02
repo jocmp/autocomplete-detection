@@ -47,6 +47,7 @@ export function TextInput({
   );
 }
 
+// https://usehooks.com/useEventListener/
 function useAutofillDetection(element: RefObject<HTMLInputElement>, onAutofill: (event: any) => any) {
   const savedHandler = useRef(onAutofill)
 
@@ -70,6 +71,3 @@ function useAutofillDetection(element: RefObject<HTMLInputElement>, onAutofill: 
     }
   }, [element]);
 }
-
-	// match the filter on autofilled elements in Firefox
-	// const mozFilterMatch = /^grayscale\(.+\) brightness\((1)?.*\) contrast\(.+\) invert\(.+\) sepia\(.+\) saturate\(.+\)$/
