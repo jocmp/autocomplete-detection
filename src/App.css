@@ -1,0 +1,53 @@
+body {
+  background-color: #ede1eb;
+}
+
+legend {
+  padding: 0 0.2rem;
+}
+
+label {
+  margin-right: 0.4rem;
+}
+
+input[type=checkbox] {
+  margin-right: 0.4rem;
+  margin-left: 0rem;
+}
+
+select {
+  padding: 0.1rem 0.4rem;
+}
+
+.main {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.layout {
+  width: 450px;
+}
+
+.debug {
+  text-align: start;
+  width: 450px;
+}
+
+.reset-button {
+  margin-top: 0.2rem;
+}
+
+.selector {
+  margin: 0.4rem 0;
+}
+
+.text-input {
+  margin-bottom: 0.4rem;
+}
+
+.address-editor-actions {
+  display: flex;
+  gap: 0.4rem;
+}
