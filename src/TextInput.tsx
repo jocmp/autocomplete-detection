@@ -19,8 +19,6 @@ export function TextInput({
   required = false,
 }: Props) {
   const logger = useAutofillLogger();
-  const ref = useRef(null);
-
 
   function onAutofill(event: any) {
     if (!('data' in event) || event.inputType === 'insertReplacementText') {
@@ -28,6 +26,7 @@ export function TextInput({
     }
   }
 
+  const ref = useRef(null);
   useAutofillDetection(ref, onAutofill);
 
   return (
