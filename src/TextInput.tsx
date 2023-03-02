@@ -23,9 +23,8 @@ export function TextInput({
 
 
   function onAutofill(event: any) {
-    // https://gist.github.com/jonathantneal/d462fc2bf761a10c9fca60eb634f6977#file-detect-autofill-js-L22-L30
-    if (!(event instanceof InputEvent) || event.inputType === 'insertReplacementText') {
-      logger.log({ inputName: id });
+    if (!('data' in event) || event.inputType === 'insertReplacementText') {
+      logger.log({ inputName: id, event: { inputType: event.inputType } });
     }
   }
 

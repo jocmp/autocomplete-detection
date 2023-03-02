@@ -1,13 +1,20 @@
 import React from "react";
 
+export interface EventData {
+  inputName: string;
+  event: {
+    inputType: string;
+  };
+}
+
 export interface AutofillEvent {
   id: string;
-  inputName: string;
   createdAt: Date;
+  data: EventData;
 }
 
 interface Logger {
-  log: (event: Pick<AutofillEvent, 'inputName'>) => any;
+  log: (data: EventData) => any;
 }
 
 export const AutofillLoggerContext = React.createContext<Logger>({

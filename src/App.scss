@@ -27,16 +27,17 @@ select {
 }
 
 .layout {
-  width: 450px;
+  flex-grow: 0;
 }
 
 .debug {
   text-align: start;
-  width: 450px;
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
 .reset-button {
-  margin-top: 0.2rem;
+  margin: 0.2rem 0;
 }
 
 .selector {
