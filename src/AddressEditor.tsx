@@ -1,7 +1,7 @@
 import { map } from "lodash";
 import { TextInput } from "./TextInput";
 import { usAdminAreas, countries } from "./database";
-import { Address, AddressEntry } from "./types";
+import { AddressEntry } from "./types";
 import React from "react";
 
 interface Props {

@@ -1,16 +1,30 @@
 import React from 'react';
 import { MetaControls } from './MetaControls';
 import { Layout } from './Layout';
-import './App.css';
+import './App.scss';
 import { emptyAddress } from './emptyAddress';
 import { AddressEntry } from './types';
+import { AutofillEvent, AutofillLoggerContext } from './useAutofillLogger';
+import { reverse } from 'lodash';
 
 export default function App() {
+  const [runningLog, setLog] = React.useState<AutofillEvent[]>([]);
   const [address, setAddress] = React.useState<AddressEntry>(emptyAddress);
-  const [showDebug, setDebug] = React.useState(false);
+  const [showDebug, setDebug] = React.useState(true);
+
+  function log(event: AutofillEvent) {
+    runningLog.push(event)
+    setLog(runningLog);
+  }
+
+  function clearLog() {
+    setLog([]);
+  }
+
+  const logger = { log };
 
   return (
-    <>
+    <AutofillLoggerContext.Provider value={logger}>
       <div className="main">
         <div className="layout">
           <MetaControls
@@ -18,6 +32,7 @@ export default function App() {
             onAddressUpdate={setAddress}
             showDebug={showDebug}
             setDebug={setDebug}
+            clearLog={clearLog}
           />
           <Layout
             address={address}
@@ -29,12 +44,14 @@ export default function App() {
             <fieldset>
               <legend>Debug log</legend>
               <pre>
-                {JSON.stringify({}, null, 2)}
+                {reverse(runningLog).map((event, idx) => (
+                  <div key={idx}>{JSON.stringify(event)}</div>
+                ))}
               </pre>
             </fieldset>
           }
         </div>
       </div>
-    </>
+    </AutofillLoggerContext.Provider>
   );
 }

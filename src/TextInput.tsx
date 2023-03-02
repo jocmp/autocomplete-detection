@@ -1,4 +1,5 @@
 import React from "react";
+import { useAutofillLogger } from "./useAutofillLogger";
 
 interface Props {
   id: string;
@@ -6,7 +7,7 @@ interface Props {
   value: string;
   required?: boolean;
   autoComplete?: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => any;
 }
 
 export function TextInput({
@@ -17,6 +18,14 @@ export function TextInput({
   autoComplete = undefined,
   required = false,
 }: Props) {
+  const logger = useAutofillLogger();
+
+  function onAnimation(e: React.AnimationEvent<HTMLInputElement>) {
+    if (e.animationName === 'onAutoFillStart') {
+      logger.log({ inputName: id });
+    }
+  }
+
   return (
     <div className="text-input">
       <label htmlFor={id}>{label}</label>
@@ -27,6 +36,7 @@ export function TextInput({
         required={required}
         onChange={onChange}
         autoComplete={autoComplete}
+        onAnimationStart={onAnimation}
         value={value}
       />
     </div>

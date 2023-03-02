@@ -3,12 +3,14 @@ import * as database from './database';
 import { emptyAddress } from "./emptyAddress";
 import { isEmpty } from "lodash";
 import { isEmptyAddress } from "./addresses";
+import { clear } from "console";
 
 interface Props {
   address: AddressEntry;
   onAddressUpdate: (address: AddressEntry) => any;
   showDebug: boolean;
   setDebug: (isDebug: boolean) => any;
+  clearLog: () => any;
 }
 
 /**
@@ -18,7 +20,8 @@ export function MetaControls({
   address,
   onAddressUpdate,
   showDebug,
-  setDebug
+  setDebug,
+  clearLog,
 }: Props) {
   function toggleDebug() {
     setDebug(!showDebug);
@@ -50,6 +53,15 @@ export function MetaControls({
             disabled={isEmptyAddress(address)}
           >
             Reset Address
+          </button>
+        </div>
+        <div>
+          <button
+            className="clear-button"
+            type="button"
+            onClick={clearLog}
+          >
+            Clear Log
           </button>
         </div>
       </fieldset>
