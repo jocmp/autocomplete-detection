@@ -1,27 +1,3 @@
-@keyframes onAutoFillStart {
-  to {}
-
-  from {}
-}
-
-@keyframes onAutoFillCancel {
-  to {}
-
-  from {}
-}
-
-input {
-
-  // Based on https://github.com/klarna/ui/blob/v4.10.0/Field/styles.scss#L228-L241
-  &:-webkit-autofill {
-    animation-name: onAutoFillStart;
-  }
-
-  &:not(:-webkit-autofill) {
-    animation-name: onAutoFillCancel;
-  }
-}
-
 body {
   background-color: #ede1eb;
 }

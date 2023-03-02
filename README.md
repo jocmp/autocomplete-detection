@@ -1,10 +1,13 @@
 # Autocomplete Detection
 
-An implementation of a [StackOverflow solution](https://stackoverflow.com/questions/11708092/detecting-browser-autofill/41530164#41530164) to detect when a user enters from autofill.
+Detects when a user enters from autofill.
 
-This implementation is limited to browsers that implement the `:-webkit-autofill` pseudo-selector but appears to work in Safari and Firefox.
+This method uses two approaches.
 
-As of March 2023, this approach does not work for Chromium browsers based on an ongoing [React GitHub issue](https://github.com/facebook/react/issues/1159#issuecomment-1372221230).
+- In Webkit or Chromium (Blink) based browsers, check if the event is an `InputEvent`, if it's not, then the data is from autofill.
+- On Firefox, all events are input events but the `inputType` changes.
+When this is available, check if it's `insertReplacementText`. When this is true, then the data is also from autofill.
+
 
 ## Getting Started
 
