@@ -1,5 +1,5 @@
 import React, { RefObject, useEffect, useRef } from "react";
-import { useAutofillLogger } from "./useAutofillLogger";
+import { useAutofillLogger } from "./autofillLogger";
 
 interface Props {
   id: string;

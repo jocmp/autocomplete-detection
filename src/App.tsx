@@ -4,15 +4,15 @@ import { Layout } from './Layout';
 import './App.scss';
 import { emptyAddress } from './emptyAddress';
 import { AddressEntry } from './types';
-import { AutofillEvent, AutofillLoggerContext } from './useAutofillLogger';
+import { AutofillEvent, AutofillLoggerContext } from './autofillLogger';
 
 export default function App() {
   const [runningLog, setLog] = React.useState<AutofillEvent[]>([]);
   const [address, setAddress] = React.useState<AddressEntry>(emptyAddress);
   const [showDebug, setDebug] = React.useState(true);
 
-  function log(event: AutofillEvent) {
-    runningLog.push(event)
+  function log(event: Pick<AutofillEvent, 'inputName'>) {
+    runningLog.push({ ...event, id: crypto.randomUUID(), createdAt: new Date() })
     setLog(runningLog);
   }
 
@@ -43,8 +43,10 @@ export default function App() {
             <fieldset>
               <legend>Debug log</legend>
               <pre>
-                {runningLog.map((event, idx) => (
-                  <div key={`${event} + ${idx}`}>{JSON.stringify(event)}</div>
+                {runningLog.slice().reverse().map((event) => (
+                  <div key={event.id}>
+                    {`${event.createdAt.toLocaleTimeString()} ${event.inputName}`}
+                  </div>
                 ))}
               </pre>
             </fieldset>

@@ -1,9 +1,6 @@
 import { AddressEntry } from "./types";
-import * as database from './database';
 import { emptyAddress } from "./emptyAddress";
-import { isEmpty } from "lodash";
 import { isEmptyAddress } from "./addresses";
-import { clear } from "console";
 
 interface Props {
   address: AddressEntry;

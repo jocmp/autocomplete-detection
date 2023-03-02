@@ -1,17 +1,18 @@
-# Autocomplete Detection
+# Autofill Detection
 
 Detects when a user enters from autofill.
 
 This method uses two approaches.
 
-- In Webkit or Chromium (Blink) based browsers, check if the event is an `InputEvent`, if it's not, then the data is from autofill.
-- On Firefox, all events are input events but the `inputType` changes.
-When this is available, check if it's `insertReplacementText`. When this is true, then the data is also from autofill.
+- In Webkit or Chromium (Blink) based browsers, the code checks the incoming event prototype. If the prototype is not `InputEvent`,
+the the event is from an autofill.
+- On Firefox, all `'input'` listeners receive `InputEvent` objects, but the `inputType` varies.
+If the input type is `insertReplacementText`, then the event is also from autofill.
 
 
 ## Getting Started
 
-Try out the demo on [CodeSandbox](https://codesandbox.io/p/github/jocmp/autocomplete-detection/main)
+Try out the demo on [CodeSandbox](https://codesandbox.io/p/github/jocmp/autofill-detection/main)
 
 Or run it locally:
 
