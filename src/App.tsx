@@ -5,7 +5,6 @@ import './App.scss';
 import { emptyAddress } from './emptyAddress';
 import { AddressEntry } from './types';
 import { AutofillEvent, AutofillLoggerContext } from './useAutofillLogger';
-import { reverse } from 'lodash';
 
 export default function App() {
   const [runningLog, setLog] = React.useState<AutofillEvent[]>([]);
@@ -44,8 +43,8 @@ export default function App() {
             <fieldset>
               <legend>Debug log</legend>
               <pre>
-                {reverse(runningLog).map((event, idx) => (
-                  <div key={idx}>{JSON.stringify(event)}</div>
+                {runningLog.map((event, idx) => (
+                  <div key={`${event} + ${idx}`}>{JSON.stringify(event)}</div>
                 ))}
               </pre>
             </fieldset>
