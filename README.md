@@ -9,7 +9,6 @@ the the event is from an autofill.
 - On Firefox, all `'input'` listeners receive `InputEvent` objects, but the `inputType` varies.
 If the input type is `insertReplacementText`, then the event is also from autofill.
 
-
 ## Getting Started
 
 Try out the demo on [CodeSandbox](https://codesandbox.io/p/github/jocmp/autofill-detection/main)

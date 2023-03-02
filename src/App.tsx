@@ -45,7 +45,7 @@ export default function App() {
               <pre>
                 {runningLog.slice().reverse().map((event) => (
                   <div key={event.id}>
-                    {event.createdAt.toLocaleTimeString()}
+                    <span className="weight-bold">{event.createdAt.toLocaleTimeString()}</span>
                     <div>{JSON.stringify(event.data)}</div>
                   </div>
                 ))}
